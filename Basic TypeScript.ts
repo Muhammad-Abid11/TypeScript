@@ -37,11 +37,6 @@ buyPet(myFavPet)
 // --------x----------
 
 
-
-
-
-
-
 // InterFace    
 // esy use krne sy apko bar bar type define nhi 
 // krna hoga agar ap same object create kr rhy hen
