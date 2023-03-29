@@ -1,3 +1,7 @@
+//  npm install jsdom   --> if quokka show error jsdom not found
+// tsc fileName.ts      --> to convert ts file to js
+
+
 // Variable in TS
 let a:string="Hello";
 console.log(a)
