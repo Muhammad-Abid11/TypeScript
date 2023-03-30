@@ -248,6 +248,29 @@ let gender: [string,string]=["Male","Female"] //if we add more elements it show 
 // gender.push("wwiow") // it work jb k isy error show krna chhaiye
 console.log(gender)
 
+// it uses 
+
+let admin:[number,string]=[1,"Admin"]
+let error:[number,string]=[404,"Not Found"]
 
 // --------x----------
 
+
+//  FOR Configuration of TS
+
+// tsc --init 
+
+/*
+      in tsconfig.json all define by its defination
+      
+
+    "target": "es2016",-->     Set the JavaScript language version for emitted JavaScript and include compatible library declarations. 
+     "lib": [],               Specify a set of bundled library declaration files that describe the target runtime environment. 
+    "rootDir": "./src",       Specify the root folder within your source files. 
+    "outDir": "./dist",       Specify an output folder for all emitted files. 
+    "sourceMap": true,         Create source map files for emitted JavaScript files. 
+    "strict": true,            Enable all strict type-checking options. 
+      
+
+
+*/
