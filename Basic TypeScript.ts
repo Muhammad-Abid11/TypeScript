@@ -241,6 +241,12 @@ console.log(add(10,5,"+")) //yhn 3rd parameter me wahi operation hoga jo apne up
 // --------x----------
 
 
+// Tuples --->  fixed length Array 
+
+let gender: [string,string]=["Male","Female"] //if we add more elements it show error 
+// here is 1 problem 
+// gender.push("wwiow") // it work jb k isy error show krna chhaiye
+console.log(gender)
 
 
 // --------x----------
