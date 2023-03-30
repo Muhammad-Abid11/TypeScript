@@ -41,6 +41,22 @@ function buyPet(pet:Animals){
 buyPet(myFavPet)
 
 
+type Person={       // 1 object or uski values ki type mention krdiya ab direct is Person k refrence kren 
+    name:string;
+    rollNum:number;
+    hobbies:string[];
+    city?:string    //ID as a optional
+}
+
+const person1:Person[]=[]   //person1 ki type Person ki trha hogi
+person1.push({
+    rollNum:23,         // inki property upper nichy ho sakti hai but
+    name:"Abid",        // property k name "name" too wahi hoga
+    hobbies:["Cricket"],
+    city:"Karachi"
+})
+person1
+
 // --------x----------
 
 
@@ -48,6 +64,7 @@ buyPet(myFavPet)
 // esy use krne sy apko bar bar object ki type define nhi 
 // krna hoga agar ap same object create kr rhy hen
 // Interface ends with      ; 
+//  interface can be extends possible 
 type StrNum= string | number    // 1 new type jo number or string dono me sy koye 1 ly sakta hai
 
 
@@ -86,11 +103,107 @@ var User1:Login={
 User1
 
 
-// --------x----------
+// ----------------------------------x----------------------------
+
+    // Difference between Type and Interface    ChatGPT
+
+
+// Define a type
+type User = {
+  name: string;
+  age: number;
+  email: string;
+};
+
+// Define an interface
+interface IUser {
+  name: string;
+  age: number;
+  email: string;
+}
+
+// Create an object that conforms to the User type
+const user1: User = {
+  name: "Alice",
+  age: 30,
+  email: "alice@example.com"
+};
+
+// Create an object that conforms to the IUser interface
+const user2: IUser = {
+  name: "Bob",
+  age: 25,
+  email: "bob@example.com"
+};
+
+// Attempt to create an object that partially conforms to the User type
+
+/*  //uncomment * me and check 
+const user3: User = {
+  name: "Charlie",
+  age: 20
+  // Error: Property 'email' is missing in type '{ name: string; age: number; }' but required in type 'User'.
+  // ye error upper nhi ayega Type k example pe nhi ayega qk  wo array disturb kr rha hai 
+};
+user3
+
+*/
+
+// Overall, the difference between a type
+//  and an interface in TypeScript is largely
+//  syntactic and conceptual, but understanding 
+// when to use each can help make your code
+//  more clear and maintainable
+
+
+
+
+// Now  Real Difference here
+
+
+    // USE OF TYPE
+type Point = [number, number];
+
+function distance(p1: Point, p2: Point): number {
+  const dx = p2[0] - p1[0];
+  const dy = p2[1] - p1[1];
+  return Math.sqrt(dx*dx + dy*dy);
+}
+
+const p1: Point = [0, 0];
+const p2: Point = [3, 4];
+console.log(distance(p1, p2)); // Output: 5
+
+    // USE OF Internface
+
+ 
+
+
+interface Animal {
+  name: string;
+  eat(food: string): void;
+}
+
+interface Dog extends Animal {
+  bark(): void;
+}
+
+const myDog: Dog = {
+  name: "Buddy",
+  eat(food: string) {
+    console.log(`Eating ${food}`);
+  },
+  bark() {
+    console.log("Woof!");
+  }
+};
+
+console.log(myDog)
+
 
 // Function in TS
 
-const foo=(hi)=>{ // it work but it is good practice  because we arenot define the "Type of parameter" that function receive
+const foo=(hi)=>{ // it work but it is not good practice  because we arenot define the "Type of parameter" that function receive
     console.log("Hello ",hi)
 }
 foo("Abid");
