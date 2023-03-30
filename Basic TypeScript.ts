@@ -30,7 +30,10 @@ console.log(std1)
 
 // Type in TS
 // humne 1 new custom type banadiya jis sirf 3 name hen;
-type Animals="cat"|"dog"|"bird";
+
+// String literals
+
+type Animals="cat"|"dog"|"bird";   // String literals here we use "|" is called Union-Operators
 
 let myFavPet:Animals="cat";//is varibale ki type Animal hai or uski 
                             // value upper me sy koye ho sakti hai 
@@ -40,6 +43,7 @@ function buyPet(pet:Animals){
 }
 buyPet(myFavPet)
 
+//down saylani
 
 type Person={       // 1 object or uski values ki type mention krdiya ab direct is Person k refrence kren 
     name:string;
@@ -219,6 +223,20 @@ const foo2=(hi:string):string=>{       //here we mentioned also mention returned
 }
 let returnedValue:string=foo2("Ali");
 returnedValue
+
+
+// Saylani down
+
+type Calc="add"|"subtract"|"+"|"-"  // String literals here we use "|" is called Union-Operators
+const add=(val1:number,val2:number,calc:Calc):number=> {
+      if (calc=="add" || calc=="+") {
+        return val1+val2
+      } else {
+        return val1-val2
+      }
+}
+
+console.log(add(10,5,"+")) //yhn 3rd parameter me wahi operation hoga jo apne upper type me mention kiya hai
 
 // --------x----------
 
