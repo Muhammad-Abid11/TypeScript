@@ -207,10 +207,14 @@ console.log(myDog)
 
 // Function in TS
 
+/*
+
 const foo=(hi)=>{ // it work but it is not good practice  because we arenot define the "Type of parameter" that function receive
     console.log("Hello ",hi)
 }
 foo("Abid");
+
+*/
 
 //1.  return jo kro uski bhi type btao
 //2.  return lazmi kro
@@ -269,8 +273,15 @@ let error:[number,string]=[404,"Not Found"]
     "rootDir": "./src",       Specify the root folder within your source files. 
     "outDir": "./dist",       Specify an output folder for all emitted files. 
     "sourceMap": true,         Create source map files for emitted JavaScript files. 
+    // souceMap humen browser pe debugging k liye asani krta hai q k browser "ts" file ko read nhi krta laken ab kryga
+
     "strict": true,            Enable all strict type-checking options. 
       
 
 
 */
+
+
+
+// -----------------x-----------
+
