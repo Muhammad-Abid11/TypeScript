@@ -285,3 +285,38 @@ let error:[number,string]=[404,"Not Found"]
 
 // -----------------x-----------
 
+// Class in TS lecture 3    Must watch it
+ 
+/*      // one method
+class StudentClass{
+  public name_construc:string;  // public ye by default bhi hota hai agar ap mention nhi kren
+  public rollNum_construc:number
+  constructor(name_rec:string,rollNum_rec:number){
+    this.name_construc=name_rec;
+    this.rollNum_construc=rollNum_rec;
+  }
+}
+*/
+//  2nd
+
+class StudentClass{
+  private skills:string[]=[]; //access modifier
+  constructor(public readonly name_rec:string,private rollNum_rec:number){
+  }
+  addSkill(skill:string){
+    this.skills.push(skill)
+  }
+}
+
+const student1=new StudentClass("Yasir",1234);
+console.log(student1)
+student1.addSkill("private me data save")
+console.log(student1)
+console.log(student1.name_rec)
+// student1.name_rec="Not Edit Possible"  // because it is only readonly
+// console.log(student1.rollNum_rec)  //  it is not direct access show error because it private
+
+
+// since we have done over configuration now 
+// just type "tsc" in cmd it will direct save app.js file in dist folder
+// tsc -w it open watch mode
