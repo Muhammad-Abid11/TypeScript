@@ -366,6 +366,8 @@
         }
         
       }
+// ------------x------
+
   // Inheritance child class
 
       class clothingProduct extends Product{
@@ -403,6 +405,7 @@
   const tShirt =new clothingProduct(12,"T-Shirt",1000,"blue","M")
   console.log(tShirt)
 
+// ------------x------
 
 
 
@@ -429,4 +432,37 @@
 const C1=new Child("ALi",2)
 console.log(C1,C1.greeting())
 
+// ------------x------
+// Singleton 
+
+// koye bhi class jika 1 bar instence create kry
+
+
+  /* 
+   Static
+   Math.round(6.9)  // static Method 
+   Math.PI  // static property 
+
+   console.log(Date.now())  // static method jo direct access kr sako
+   
+   
+   const  date=new Date()     // "new jhn use ho "it isnot static 
+   console.log(date.getFullYear())
+   */
+
+
+class Util{
+  private static instance: Util; 
+  private constructor(){
+
+  }
+  static getInstance(){
+    if(!this.instance){
+      this.instance=new Util();
+    }
+    return this.instance;
+  }
+}
+const utlInst = Util.getInstance();
+const utlInst2 = Util.getInstance();
 
