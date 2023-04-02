@@ -169,6 +169,7 @@ console.log(student1.name_rec);
 // tsc -w it open watch mode
 // -----------------x----------- Class 4
 // TypeScript Getters and Setters 
+//  same as like method 
 class Product {
     constructor(_id, _price, _name) {
         this._id = _id;
@@ -193,7 +194,7 @@ class Product {
         return this._name; //_name our value
     }
     set name(name) {
-        if (!name) {
+        if (!name) { // agar name nhi ho to error throw kro
             throw new Error("Name cannot be empty");
         }
         this._name = name;
@@ -201,6 +202,14 @@ class Product {
     get price() {
         return this._price; //_price our value
     }
+}
+// Inheritance child class
+class clothingProduct extends Product {
+    constructor(id, name, price, _color, _size) {
+        super(id, price, name); // yahn ki position same ho jo 
+        this._color = _color;
+        this._size = _size;
+    } // upper construction me hai  
 }
 const product1 = new Product(2, 3, "Bilal");
 console.log(product1);
@@ -216,4 +225,20 @@ console.log(product1.id);
 console.log(product1.name); //through getter use direct method name
 // console.log(product1.name="")  //show error!
 console.log(product1.name = "Abdullah ");
+// Inheritance
+const tShirt = new clothingProduct(12, "T-Shirt", 1000, "blue", "M");
+console.log(tShirt);
+// abstract 
+// jo base class ko extend kry us k pass 1 particular method ho
+class Parent {
+    constructor(_p1, _p1Num) {
+        this._p1 = _p1;
+        this._p1Num = _p1Num;
+    }
+}
+class Child extends Parent {
+    constructor(_p1, _p1Num) {
+        super(_p1, _p1Num);
+    }
+}
 //# sourceMappingURL=Basic%20TypeScript.js.map
