@@ -123,25 +123,97 @@ let error = [404, "Not Found"];
       
 
     "target": "es2016",-->     Set the JavaScript language version for emitted JavaScript and include compatible library declarations.
-     "lib": [],               Specify a set of bundled library declaration files that describe the target runtime environment.
+    "lib": [],               Specify a set of bundled library declaration files that describe the target runtime environment.
     "rootDir": "./src",       Specify the root folder within your source files.
     "outDir": "./dist",       Specify an output folder for all emitted files.
     "sourceMap": true,         Create source map files for emitted JavaScript files.
+    // souceMap humen browser pe debugging k liye asani krta hai q k browser "ts" file ko read nhi krta laken ab kryga
+
     "strict": true,            Enable all strict type-checking options.
       
 
 
 */
 // -----------------x-----------
-// Class in TS
+// Class in TS lecture 3    Must watch it
+/*      // one method
+class StudentClass{
+  public name_construc:string;  // public ye by default bhi hota hai agar ap mention nhi kren
+  public rollNum_construc:number
+  constructor(name_rec:string,rollNum_rec:number){
+    this.name_construc=name_rec;
+    this.rollNum_construc=rollNum_rec;
+  }
+}
+*/
+//  2nd
 class StudentClass {
     constructor(name_rec, rollNum_rec) {
-        this.name_construc = name_rec;
-        this.rollNum_construc = rollNum_rec;
+        this.name_rec = name_rec;
+        this.rollNum_rec = rollNum_rec;
+        this.skills = []; //access modifier
+    }
+    addSkill(skill) {
+        this.skills.push(skill);
     }
 }
 const student1 = new StudentClass("Yasir", 1234);
 console.log(student1);
-// since we have done over configuration now
-// just type "tsc" in cmd
+student1.addSkill("private me data save");
+console.log(student1);
+console.log(student1.name_rec);
+// student1.name_rec="Not Edit Possible"  // because it is only readonly
+// console.log(student1.rollNum_rec)  //  it is not direct access show error because it private
+// since we have done over configuration now 
+// just type "tsc" in cmd it will direct save app.js file in dist folder
+// tsc -w it open watch mode
+// -----------------x----------- Class 4
+// TypeScript Getters and Setters 
+class Product {
+    constructor(_id, _price, _name) {
+        this._id = _id;
+        this._price = _price;
+        this._name = _name;
+    }
+    /*
+  
+    setId(id:number){ //ye hai method but ab hum Getters And Setters Use krengy
+      this._id=id
+    }
+    getId(){ //ye hai method but ab hum Getters And Setters Use krengy
+    return this._id
+    }
+
+    */
+    // Geter
+    get id() {
+        return this._id; //_id our value
+    }
+    get name() {
+        return this._name; //_name our value
+    }
+    set name(name) {
+        if (!name) {
+            throw new Error("Name cannot be empty");
+        }
+        this._name = name;
+    }
+    get price() {
+        return this._price; //_price our value
+    }
+}
+const product1 = new Product(2, 3, "Bilal");
+console.log(product1);
+//----with methodes
+/*
+product1.setId(3)
+console.log(product1.getId())
+*/
+// jb hum methodes use kr rhy to single private property ko methode k through access krna hota hai.
+// Now Getter And Setters
+console.log(product1.price);
+console.log(product1.id);
+console.log(product1.name); //through getter use direct method name
+// console.log(product1.name="")  //show error!
+console.log(product1.name = "Abdullah ");
 //# sourceMappingURL=Basic%20TypeScript.js.map
