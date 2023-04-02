@@ -320,3 +320,61 @@ console.log(student1.name_rec)
 // since we have done over configuration now 
 // just type "tsc" in cmd it will direct save app.js file in dist folder
 // tsc -w it open watch mode
+
+
+
+
+// -----------------x----------- Class 4
+
+// TypeScript Getters and Setters 
+
+
+class Product{
+  constructor(private _id:number,private _price:number,private _name:string){
+  }
+  /*
+ 
+  setId(id:number){ //ye hai method but ab hum Getters And Setters Use krengy
+    this._id=id
+  }
+  getId(){ //ye hai method but ab hum Getters And Setters Use krengy
+   return this._id
+  }
+
+  */
+  // Geter
+  get id(){         // receive value
+    return this._id //_id our value
+  }
+
+  get name(){         // receive value
+    return this._name //_name our value
+  }
+  
+  set name(name:string){
+    if(!name){
+      throw new Error("Name cannot be empty")
+    }
+    this._name=name
+  }
+  get price(){         // receive value
+    return this._price //_price our value
+  }
+  
+}
+const product1=new Product(2,3,"Bilal")
+console.log(product1)
+//----with methodes
+/*
+product1.setId(3)
+console.log(product1.getId())
+*/
+// jb hum methodes use kr rhy to single private property ko methode k through access krna hota hai.
+
+
+// Now Getter And Setters
+console.log(product1.price)
+console.log(product1.id)
+console.log(product1.name)//through getter use direct method name
+// console.log(product1.name="")  //show error!
+console.log(product1.name="Abdullah ")  //show error!
