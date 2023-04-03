@@ -96,6 +96,38 @@ const Cars: HybridVehicles = {
 
 console.log(Cars);
 
+//  Union and Intersection InterFaces
+
+interface I_MotorBikes {
+  // 1st Interface
+  Label: string;
+  rideSpeed: number;
+}
+interface I_MotorCar {
+  // 2nd Interface
+  Label: string;
+  carSpeed: number;
+}
+// Union of Interface
+interface bothMotors extends I_MotorBikes, I_MotorCar {}
+
+const Honda: bothMotors = {
+  carSpeed: 22,
+  Label: "Sajid",
+  rideSpeed: 233,
+};
+console.log(Honda);
+
+//  Interface can be used for Class
+
+interface Animl {
+  name: string;
+  runningSpeed: number;
+}
+class Tiger implements Animl {
+  constructor(public name: string, public runningSpeed: number) {} //here public mendatory
+}
+
 // --------x----------
 
 // InterFace    (bluePrint for object)
