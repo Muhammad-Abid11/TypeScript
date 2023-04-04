@@ -499,3 +499,58 @@ class Util {
 }
 const utlInst = Util.getInstance();
 const utlInst2 = Util.getInstance();
+
+//----------x--------
+
+// Enum
+// An enum can be defined using the enum keyword.
+
+// 1.Numeric enums
+
+enum Direction {
+  Up = 1,
+  Down,
+  Left,
+  Right,
+}
+
+enum Direction2 {
+  Up,
+  Down,
+  Left,
+  Right,
+}
+
+console.log(Direction); // value then prop
+console.log(Direction2);
+
+// Above, we have a numeric enum where Up is initialized with 1. All of the following members are
+// auto-incremented from that point on. In other words, Direction.Up has the value 1, Down has 2, Left has 3, and Right has 4.
+
+// if not define it will start from 0 like Direction 2
+
+//2. String enums
+
+enum Direction3 {
+  Up = "UP",
+  Down = "DOWN",
+  Left = "LEFT",
+  Right = "RIGHT",
+}
+
+console.log(Direction3);
+
+// While string enums don’t have auto-incrementing behavior, string enums have the benefit that they “serialize” well.
+// In other words, if you were debugging and had to read the runtime value of a numeric enum, the value is often opaque
+
+enum FileAccess {
+  // constant members
+  None,
+  Read = 1 << 1,
+  Write = 1 << 2,
+  ReadWrite = Read | Write,
+  // computed member
+  G = "123".length,
+}
+
+FileAccess;
