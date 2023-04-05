@@ -62,7 +62,7 @@ console.log(person1);
 
 // --------------------------x-----------
 
-//  Union and Intersection Type
+//  Union and Intersection Type lecture 5
 
 type MotorBikes = {
   // 1st type
@@ -84,7 +84,8 @@ const Bike: Vehicles = {
 };
 console.log(Bike);
 
-// Intersection of Types
+// Intersection of Types lecture 5
+
 type HybridVehicles = MotorBikes & MotorCar;
 
 const Cars: HybridVehicles = {
@@ -96,7 +97,7 @@ const Cars: HybridVehicles = {
 
 console.log(Cars);
 
-//  Union and Intersection InterFaces
+//  Union and Intersection InterFaces lecture 5
 
 interface I_MotorBikes {
   // 1st Interface
@@ -109,7 +110,10 @@ interface I_MotorCar {
   carSpeed: number;
 }
 // Union of Interface
+
 interface bothMotors extends I_MotorBikes, I_MotorCar {}
+//interface extends 2,3 interface k sath kr sakten hen jb k
+//class sirf 1 class k sath extend hoti hai
 
 const Honda: bothMotors = {
   carSpeed: 22,
@@ -123,11 +127,49 @@ console.log(Honda);
 interface Animl {
   name: string;
   runningSpeed: number;
+  eat(food: string): string;
 }
 class Tiger implements Animl {
-  constructor(public name: string, public runningSpeed: number) {} //here public mendatory
+  //implement is a keyword to use interface for any class
+  constructor(public name: string, public runningSpeed: number) {} //here public keyword mandatory
+  eat(foot: string) {
+    return "Eating Food";
+  }
 }
 
+// --------x----------
+
+// Type Guard lecture 5
+
+type A = {
+  name: string;
+  height: number;
+};
+
+type B = {
+  name: string;
+  length: number;
+};
+type C = A | B;
+
+const f = (parameter: C) => {
+  console.log(parameter.name);
+  //  console.log(parameter.height) //it shows error
+  // typescript keh rha hai shyd ye property nhi ho too ap confirm kren
+  //now we use Type Guards
+
+  if ("height" in parameter) {
+    console.log(parameter.height);
+  }
+  if ("length" in parameter) {
+    console.log(parameter.length);
+  }
+};
+const E: C = {
+  name: "apple",
+  height: 23,
+};
+f(E);
 // --------x----------
 
 // InterFace    (bluePrint for object)
@@ -416,7 +458,8 @@ return this._id
 // ------------x------
 
 // Inheritance child class
-
+//interface extends 2,3 interface k sath kr sakten hen jb k
+//class sirf 1 class k sath extend hoti hai
 class clothingProduct extends Product {
   constructor(
     id: number,
@@ -450,15 +493,16 @@ const tShirt = new clothingProduct(12, "T-Shirt", 1000, "blue", "M");
 console.log(tShirt);
 
 // ------------x------
-
+// lecture 4
 // abstract
-// jo base class ko extend kry us k pass 1 particular method ho
+// jo base class ko extend kry us k pass 1 particular method ho lazmi ho jo base me hai
 
 abstract class Parent {
   constructor(private _p1: string, private _p1Num: number) {}
   //Abtract function in Parent that should be in child
   abstract greeting(): string; // abstract method
 }
+
 class Child extends Parent {
   constructor(_p1: string, _p1Num: number) {
     super(_p1, _p1Num);
@@ -502,6 +546,60 @@ const utlInst2 = Util.getInstance();
 
 //----------x--------
 
+// TypeCasting  lecture 6
+// typeScript ko btane k liye hum ye use krten hen k ye Html element hau
+const input = document.getElementById("input")! as HTMLInputElement; //as HTMLInputElement <--- TypeCasting
+
+//----------x--------
+
+// Generics lecture 6
+//  Promise<type>
+const promiseFunc: Promise<string> = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve("Issue Resolved");
+  }, 2000);
+});
+promiseFunc.then((data) => {
+  // console.log(data); it ok but
+  const arr = data.split(" "); //data.split not work  it show error data type not defined
+  console.log(arr);
+  // so we use generic where function call
+});
+
+// down another method where promise k ander annonimous function me promise hai
+
+type PUser = {
+  name: string;
+  id: number;
+};
+const promiseFunc2 = (): Promise<PUser> => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve({
+        name: "abid",
+        id: 23,
+      });
+    }, 2000);
+  });
+};
+promiseFunc2().then((data) => {
+  // yhn bhi change
+  console.log(data.name, data.id);
+});
+
+//----------x--------
+//video 45:55 // helperfunction that work for us
+function merge<T extends object, U extends object>(ObjA: T, ObjB: U) {
+  //ye "object" hai ye nhi "Object"
+  //  <T,U> yhn ap kuch bhi rakh len. without is k Typescript key ko remove krdyga
+  return { ...ObjA, ...ObjB };
+}
+const mergedVal = merge({ name: "Abid" }, { id: 21 }); // ab upper koye bhi type ki value do wo usy T,U alag suppose kr k merge kryga
+console.log(mergedVal.name);
+
+//----------x--------
+
+//----------x--------
 // Enum
 // An enum can be defined using the enum keyword.
 
@@ -553,4 +651,4 @@ enum FileAccess {
   G = "123".length,
 }
 
-FileAccess;
+console.log(FileAccess);
