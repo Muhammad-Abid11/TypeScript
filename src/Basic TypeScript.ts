@@ -599,6 +599,33 @@ console.log(mergedVal.name);
 
 //----------x--------
 
+// Decorator
+// isy use krne k liye apko .json file me 1 decorator ko uncomment krna hai
+function Logger(msg: string) {
+  //Decorator Factory
+  return function (construction: Function) {
+    //Decorator
+    console.log("Loading...", msg);
+  };
+}
+
+function FillHtml(template: string, elemID: string) {
+  return function (construction: Function) {
+    const elm = document.getElementById(elemID);
+    if (elm) {
+      elm.innerHTML = template;
+    }
+  };
+}
+@Logger("Calling From Logger") // usy lazmi constructor me koye parameter receive ho
+@FillHtml("<h1>Hello</h1>", "app") // usy lazmi constructor me koye parameter receive ho
+class P {
+  name = "abid";
+  constructor() {}
+}
+
+// decorator jis k class k sath hoga us k sath connect hojayega
+//decorator can use with multiple classes with multi arguments
 //----------x--------
 // Enum
 // An enum can be defined using the enum keyword.
