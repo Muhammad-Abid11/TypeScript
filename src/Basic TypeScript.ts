@@ -599,7 +599,8 @@ console.log(mergedVal.name);
 
 //----------x--------
 
-// Decorator
+// Decorator  lecture 7
+
 // isy use krne k liye apko .json file me 1 decorator ko uncomment krna hai
 function Logger(msg: string) {
   //Decorator Factory
@@ -626,6 +627,37 @@ class P {
 
 // decorator jis k class k sath hoga us k sath connect hojayega
 //decorator can use with multiple classes with multi arguments
+//------------------------------xx------------------
+
+// Function overloading lecture 7
+
+type Combined = string | number;
+
+function addd(x: number, y: number): number; //line 1
+function addd(x: string, y: string): string; //line 2
+function addd(x: Combined, y: Combined) {
+  // return x+y // it show error k agar x->string hua or y->number too?
+  // now
+  if (typeof x === "number" && typeof y === "number") {
+    return x + y;
+  } else if (typeof x === "string" && typeof y === "string") {
+    return x + y;
+  } else {
+    throw new Error("Type Did not match");
+  }
+}
+const find = addd("Hello", "World");
+console.log(find.split(" , "));
+// ye error q k usy nhi malum return number ho rha hai ya string
+// dy agar line 1,2 nhi likhengy
+const find2 = addd(2, 3);
+console.log(find2.toFixed());
+
+//line 1,2 sy wo khud decide kryga k return kiya ho rha hai
+// agar ap line 1,2 remove krengy too apko type casting use krna hoga like
+
+const find3 = addd(2, 34) as number;
+console.log(find3);
 //----------x--------
 // Enum
 // An enum can be defined using the enum keyword.
